@@ -21,7 +21,7 @@ class MyStreamListener(tweepy.StreamListener):
     def __init__(self, api):
         self.api = api
         super(tweepy.StreamListener, self).__init__()
-	self.producer = KafkaProducer(bootstrap_servers=['localhost'], value_serializer=lambda v: json.dumps(v).encode('ascii'))
+	self.producer = KafkaProducer(bootstrap_servers=['<IP>'], value_serializer=lambda v: json.dumps(v).encode('ascii'))
 
     def on_status(self, status):
         rand_partition = random.randint(0, 2)
